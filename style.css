@@ -147,3 +147,14 @@ img.nav-logo {
   max-width: 220px;
   height: auto;
 }
+
+/* Sidebar navigation links — no bold, 70% opacity */
+#sidebar a {
+  font-weight: 400 !important;
+  opacity: 0.7;
+}
+
+#sidebar a:hover,
+#sidebar a[aria-current="page"] {
+  opacity: 1;
+}

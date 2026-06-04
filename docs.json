@@ -16,7 +16,7 @@
     "eyebrows": "breadcrumbs"
   },
   "contextual": {
-    "options": ["view", "assistant"]
+    "options": ["assistant"]
   },
   "navigation": {
     "global": {
