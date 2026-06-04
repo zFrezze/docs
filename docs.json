@@ -4,9 +4,9 @@
   "name": "AdvancedModList",
   "description": "Documentation for AdvancedModList — a Paper plugin that detects client-side Minecraft mods.",
   "colors": {
-    "primary": "#166E3F",
-    "light": "#26BD6C",
-    "dark": "#166E3F"
+    "primary": "#b7f8ff",
+    "light": "#b7f8ff",
+    "dark": "#b7f8ff"
   },
   "favicon": "/favicon.ico",
   "icons": {
@@ -28,7 +28,7 @@
         }
       ]
     },
-    "directory": "card",
+
     "groups": [
       {
         "group": "Getting Started",
