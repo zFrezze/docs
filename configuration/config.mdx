@@ -1,0 +1,104 @@
+---
+title: config.yml
+description: All settings available in the main AdvancedModList configuration file.
+---
+
+The main configuration file is located at `plugins/AdvancedModList/config.yml`.
+
+<Tip>
+  The recommended starting configuration is `check-mode: "RELEVANT"`, `probe-speed: 8`, and `probe-transport-speed: "auto"`.
+</Tip>
+
+---
+
+## Language
+
+```yaml
+language: "en"
+```
+
+Determines which language file the plugin loads from `plugins/AdvancedModList/lang/<language>.yml`.
+
+| Value | Language |
+|---|---|
+| `en` | English |
+| `de` | German |
+| `es` | Spanish |
+| `fr` | French |
+
+---
+
+## Check mode
+
+```yaml
+check-mode: "ALL"
+```
+
+Defines which mods are validated during a scan.
+
+| Mode | Behavior | Performance |
+|---|---|---|
+| `ALL` | Scans every mod listed in `mods.yml` | Slowest — best for full audits |
+| `BLOCKED` | Only checks mods in `blocked-mods.yml` | Fastest |
+| `RELEVANT` | Blocked mods + mods in `relevant-mods.yml` | Balanced (recommended) |
+
+---
+
+## Probe speed
+
+```yaml
+probe-speed: 8
+```
+
+Controls how many indicators are sent per request cycle. Higher values finish scans faster but increase server load. Lower the value if players disconnect during scans.
+
+---
+
+## Probe transport speed
+
+```yaml
+probe-transport-speed: "auto"
+```
+
+Selects the scanning strategy used to send probe packets.
+
+| Value | When to use |
+|---|---|
+| `auto` | Recommended — adapts automatically based on server version |
+| `fastest` | Best performance on Minecraft 1.21.4 and older |
+| `fast` | Safer option for Minecraft 1.21.5+ |
+
+---
+
+## Check delay
+
+```yaml
+check-delay-ticks: 0
+```
+
+Pause duration (in ticks) between request cycles. `0` means immediate processing with no added delay.
+
+---
+
+## Timeout
+
+```yaml
+timeout-ticks: 200
+```
+
+Maximum runtime for a single probe, in ticks (200 ticks ≈ 10 seconds). If the scan does not finish in time, it is marked as `TIMEOUT`.
+
+---
+
+## Bedrock support
+
+```yaml
+bedrock:
+  detect: true
+  warn-on-detect: false
+```
+
+| Option | Description |
+|---|---|
+| `detect` | When `true` and Floodgate/Geyser is present, Bedrock players are excluded from Java-specific scanning |
+| `warn-on-detect` | When `true`, a warning is generated whenever a Bedrock client is detected and skipped |

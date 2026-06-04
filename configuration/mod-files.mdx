@@ -1,0 +1,123 @@
+---
+title: Mod Files
+description: How to configure mods.yml, blocked-mods.yml, and relevant-mods.yml.
+---
+
+AdvancedModList uses three YAML files in `plugins/AdvancedModList/` to define which mods are tracked and how they are classified.
+
+| File | Purpose |
+|---|---|
+| `mods.yml` | Maps display names to detection identifiers |
+| `blocked-mods.yml` | Mods that trigger a "blocked" result |
+| `relevant-mods.yml` | Extra mods scanned when `check-mode: "RELEVANT"` |
+
+---
+
+## mods.yml
+
+This file connects user-friendly mod names to the identifiers the plugin looks for during a scan.
+
+**Single identifier**
+
+```yaml
+mods:
+  ExampleMod: "example.identifier"
+```
+
+**Multiple identifiers**
+
+```yaml
+mods:
+  ExampleMod:
+    - "example.identifier.primary"
+    - "example.identifier.secondary"
+```
+
+Both formats are interchangeable within the same file. When multiple identifiers match for the same mod, the mod is only added once to the detected list.
+
+### Why multiple identifiers?
+
+The same mod may expose different identifiers depending on:
+
+- Mod loader (Fabric, Forge, NeoForge)
+- Minecraft version
+- Mod version differences
+- Bundled configuration library variations
+
+<Warning>
+  Never declare the same mod name twice in the file — YAML parsers keep only the last value. Use the multi-entry list format instead.
+</Warning>
+
+---
+
+## blocked-mods.yml
+
+Lists mods that should be flagged as forbidden. Matching is **case-insensitive**.
+
+```yaml
+blocked-mods:
+  - meteor-client
+  - xray
+  - Freecam
+```
+
+Blocked mod detections affect:
+
+- In-game staff notifications
+- Discord webhook categorization
+- Auto-command group execution (`any-blocked`)
+- PlaceholderAPI results (`%aml_blocked_mods%`)
+- GUI threat displays
+
+---
+
+## relevant-mods.yml
+
+This file is only active when `check-mode: "RELEVANT"` is set. It lists additional mods (beyond blocked ones) that should still be scanned.
+
+Blocked mods are **automatically included** in RELEVANT mode — you do not need to duplicate them here.
+
+---
+
+## Adding a new mod
+
+<Steps>
+  <Step title="Find a stable detection identifier">
+    Identify a unique, consistent identifier for the mod. Avoid generic strings that could match unrelated mods.
+  </Step>
+  <Step title="Add to mods.yml">
+    Add the mod name and its identifier(s). Use the multi-entry list format if it varies across loaders or versions.
+  </Step>
+  <Step title="Add to blocked-mods.yml if needed">
+    If the mod should be forbidden, add its name to `blocked-mods.yml`.
+  </Step>
+  <Step title="Reload">
+    Run `/aml reload` to apply changes without restarting.
+  </Step>
+  <Step title="Verify">
+    Run `/aml probe <player>` and `/aml list <player>` to confirm detection works.
+  </Step>
+</Steps>
+
+---
+
+## Identifier quality guidelines
+
+Good identifiers should be:
+
+- **Unique** — specific to a single mod
+- **Consistent** — stable across mod releases
+- **Non-overlapping** — avoid strings shared with unrelated mods
+- **Cross-platform validated** — tested against all loaders and versions you support
+
+Avoid generic identifiers unless you intentionally want broad detection.
+
+---
+
+## Check mode comparison
+
+| Mode | What is scanned | Best for |
+|---|---|---|
+| `ALL` | Every entry in `mods.yml` | Admin audits, full inventory |
+| `BLOCKED` | Only `blocked-mods.yml` entries | Maximum performance |
+| `RELEVANT` | Blocked + `relevant-mods.yml` | Balanced daily use |

@@ -1,0 +1,82 @@
+---
+title: Detection Behavior
+description: How AdvancedModList scans clients and categorizes results.
+---
+
+AdvancedModList performs client-side verification by sending probe packets and analyzing the player's runtime behavior against your configured mod list. When enough configured indicators match, the related mod is marked as detected.
+
+---
+
+## Result categories
+
+| Category | Description |
+|---|---|
+| Allowed | Mods detected that are not on the blocklist |
+| Blocked | Mods detected that appear in `blocked-mods.yml` |
+| Warning | Incomplete or suspicious scan result |
+
+---
+
+## Transport speed settings
+
+The `probe-transport-speed` setting controls how probe packets are sent:
+
+| Value | Best for |
+|---|---|
+| `fastest` | Minecraft 1.21.4 and older — maximum performance |
+| `fast` | Minecraft 1.21.5+ — safer, avoids packet handling issues |
+| `auto` | Recommended — selects automatically based on server version |
+
+---
+
+## Probe speed
+
+The default `probe-speed: 8` is recommended for most servers. Higher values reduce the number of request cycles (faster scans), while lower values reduce scan pressure — useful if players experience disconnections.
+
+---
+
+## Special cases
+
+### Bedrock players
+
+Bedrock clients use a different network stack and should be excluded from Java-only scanning. Enable the `bedrock.detect` option in `config.yml` and ensure Floodgate or Geyser is installed.
+
+### Bypass detection
+
+A separate module estimates whether a scan result looks incomplete or deliberately manipulated. See [Modules — Bypass Detection](/modules/overview#bypass-detection) for details. This is distinct from blocked-mod detection.
+
+---
+
+## False positives
+
+A false positive occurs when a mod is reported as detected when it is not actually present.
+
+**Common causes:**
+
+- Detection identifiers that are too broad
+- Multiple mods sharing similar identifiers
+- Modpacks that bundle files from other mods
+
+**Fix:** Use specific, unique identifiers. Validate them across all supported mod loaders and Minecraft versions.
+
+---
+
+## False negatives
+
+A false negative occurs when a mod is present but not detected.
+
+**Common causes:**
+
+- The mod hides or obfuscates its behavior
+- The client is blocking scan packets
+- `check-mode` is set to a mode that excludes the target mod
+- The wrong identifier is configured
+
+---
+
+## Best practices
+
+- Use `check-mode: "RELEVANT"` or `"BLOCKED"` for daily use — scanning everything in `mods.yml` is slow
+- Use multi-entry identifier lists for mods that behave differently across loaders
+- Keep `blocked-mods.yml` focused; avoid adding mods you do not actively enforce
+- Test new identifiers with `/aml probe` before deploying to production

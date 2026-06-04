@@ -1,8 +1,8 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "almond",
-  "name": "Product Guide",
-  "description": "Step-by-step guides for every product—platform setup, analytics, and integrations in one place.",
+  "name": "AdvancedModList",
+  "description": "Documentation for AdvancedModList — a Paper plugin that detects client-side Minecraft mods.",
   "colors": {
     "primary": "#166E3F",
     "light": "#26BD6C",
@@ -16,7 +16,7 @@
     "eyebrows": "breadcrumbs"
   },
   "contextual": {
-    "options": ["copy", "view", "assistant", "mcp", "add-mcp"]
+    "options": ["copy", "view", "assistant"]
   },
   "navigation": {
     "global": {
@@ -27,51 +27,56 @@
           "href": "/"
         },
         {
-          "anchor": "Changelog",
-          "icon": "scroll-text",
-          "href": "https://www.mintlify.com/docs/changelog"
-        },
-        {
-          "anchor": "Help",
-          "icon": "life-buoy",
-          "href": "https://www.mintlify.com/docs/contact-support"
+          "anchor": "GitHub",
+          "icon": "github",
+          "href": "https://github.com/Jakobgamer/AdvancedModList-Wiki"
         }
       ]
     },
     "directory": "card",
     "groups": [
       {
-        "group": "Platform",
-        "icon": "layers",
+        "group": "Getting Started",
+        "icon": "rocket",
         "expanded": true,
         "pages": [
-          "platform/quickstart",
-          "platform/key-concepts",
-          "platform/configuration/settings",
-          "platform/configuration/user-management",
-          "platform/administration/roles-permissions"
+          "getting-started/installation"
         ]
       },
       {
-        "group": "Analytics",
-        "icon": "chart-bar",
+        "group": "Configuration",
+        "icon": "settings",
         "expanded": true,
         "pages": [
-          "analytics/quickstart",
-          "analytics/connect-data",
-          "analytics/dashboards/create-dashboard",
-          "analytics/reports/scheduled-reports"
+          "configuration/config",
+          "configuration/mod-files"
         ]
       },
       {
-        "group": "Integrations",
-        "icon": "plug",
+        "group": "Modules",
+        "icon": "blocks",
         "expanded": true,
         "pages": [
-          "integrations/quickstart",
-          "integrations/authentication",
-          "integrations/connectors/crm",
-          "integrations/webhooks/configure"
+          "modules/overview"
+        ]
+      },
+      {
+        "group": "Reference",
+        "icon": "book-open",
+        "expanded": true,
+        "pages": [
+          "reference/commands",
+          "reference/permissions",
+          "reference/placeholderapi"
+        ]
+      },
+      {
+        "group": "Advanced",
+        "icon": "flask-conical",
+        "expanded": true,
+        "pages": [
+          "advanced/detection-behavior",
+          "advanced/troubleshooting"
         ]
       }
     ]
@@ -84,14 +89,11 @@
     "links": [],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "GitHub",
+      "href": "https://github.com/Jakobgamer/AdvancedModList-Wiki"
     }
   },
   "footer": {
-    "socials": {
-      "x": "https://x.com/yourcompany",
-      "linkedin": "https://linkedin.com/company/yourcompany"
-    }
+    "socials": {}
   }
 }

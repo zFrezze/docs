@@ -1,0 +1,61 @@
+---
+title: Commands
+description: All commands available in AdvancedModList.
+---
+
+The primary command is `/aml`. Aliases: `/advancedmodlist`, `/ml`, `/modlist`.
+
+---
+
+## General
+
+| Command | Description | Permission |
+|---|---|---|
+| `/aml help` | Lists all commands you have access to | `aml.command.help` |
+| `/aml reload` | Reloads config, mod files, language files, and modules | `aml.command.reload` |
+
+---
+
+## Player scanning
+
+| Command | Description | Permission |
+|---|---|---|
+| `/aml probe <player>` | Starts a manual mod scan for the target player | `aml.command.probe` |
+| `/aml list <player>` | Shows recently detected mods for the target player | `aml.command.list` |
+| `/aml <player>` | Quick shortcut to view a player's mod list | `aml.command.modlist` |
+
+---
+
+## GUI
+
+| Command | Description | Permission |
+|---|---|---|
+| `/aml gui` | Opens the scan data GUI | `aml.command.gui` |
+| `/aml gui <player>` | Opens the detailed view for a specific player | `aml.command.gui` |
+
+---
+
+## Blocked mods management
+
+| Command | Description | Permission |
+|---|---|---|
+| `/aml blocked list` | Lists all currently blocked mods | `aml.command.blocked.list` |
+| `/aml blocked add <mod>` | Adds a configured mod to the blocklist | `aml.command.blocked.add` |
+| `/aml blocked remove <mod>` | Removes a mod from the blocklist | `aml.command.blocked.remove` |
+
+<Note>
+  `/aml blocked add` only works with mods already defined in `mods.yml`. To track a new mod, add it to the file first, then reload.
+</Note>
+
+---
+
+## Multi-server
+
+| Command | Description | Permission |
+|---|---|---|
+| `/aml multiserver info` | Shows multi-server module status and details | `aml.command.multiserver.info` |
+| `/aml multiserver clear confirm` | Deletes **all** global player scan data | `aml.command.multiserver.clear` |
+
+<Warning>
+  `/aml multiserver clear confirm` is irreversible. It permanently removes all scan data across every connected server.
+</Warning>

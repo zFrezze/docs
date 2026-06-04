@@ -1,0 +1,97 @@
+---
+title: Installation
+description: How to install AdvancedModList on your Paper server.
+---
+
+## Requirements
+
+| Requirement | Minimum |
+|---|---|
+| Server software | Paper or Paper-compatible fork |
+| Minecraft version | 1.20+ |
+| Java | 17 or newer |
+
+**Optional dependencies**
+
+- **PlaceholderAPI** — enables `%aml_*%` placeholders. The expansion registers automatically; no eCloud download needed.
+- **MySQL** — required only for the multi-server data sync module.
+
+---
+
+## Installation steps
+
+<Steps>
+  <Step title="Download the JAR">
+    Place the `AdvancedModList-x.x.x.jar` file into your server's `plugins/` folder.
+  </Step>
+  <Step title="Start the server once">
+    Start (or restart) the server. The plugin will generate all default configuration files.
+  </Step>
+  <Step title="Stop the server">
+    Stop the server so you can safely edit the generated config files.
+  </Step>
+  <Step title="Configure the plugin">
+    Edit `plugins/AdvancedModList/config.yml`, `mods.yml`, and any module files you need. See [Configuration](/configuration/config) for details.
+  </Step>
+  <Step title="Restart and verify">
+    Restart the server, then run `/aml probe <yourname>` and `/aml list <yourname>` to confirm everything works.
+  </Step>
+</Steps>
+
+---
+
+## Generated files
+
+After the first start, the plugin creates:
+
+**Core config files**
+
+| File | Purpose |
+|---|---|
+| `config.yml` | Main plugin settings |
+| `mods.yml` | All tracked mods and their identifiers |
+| `blocked-mods.yml` | Mods that trigger a blocked result |
+
+**Module config files** (in `modules/`)
+
+| File | Module |
+|---|---|
+| `start-scan.yml` | Auto-scan on player join |
+| `discord.yml` | Discord webhook notifications |
+| `auto-command.yml` | Console commands triggered by scan results |
+| `bypass-detection.yml` | Suspicious scan pattern analysis |
+| `gui.yml` | In-game GUI settings |
+| `multi-server.yml` | MySQL-based cross-server data sync |
+
+**Language files** (in `lang/`)
+
+English (`en`), German (`de`), Spanish (`es`), and French (`fr`).
+
+---
+
+## Updating
+
+1. Stop the server.
+2. Replace the old JAR with the new one.
+3. Start the server.
+
+<Warning>
+  Do **not** delete existing config files unless you want the plugin to regenerate defaults. Your customizations will be lost.
+</Warning>
+
+---
+
+## Quick verification
+
+After installation, run these commands in-game:
+
+```
+/aml probe <yourname>
+/aml list <yourname>
+```
+
+If PlaceholderAPI is installed:
+
+```
+/papi parse <yourname> %aml_clean%
+```

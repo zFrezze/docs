@@ -1,0 +1,88 @@
+---
+title: Troubleshooting
+description: Solutions for common AdvancedModList issues.
+---
+
+## PlaceholderAPI shows "0 placeholder hook(s) registered"
+
+This log line does not indicate a failure — it is a misleading message from PlaceholderAPI itself.
+
+**Verify the expansion is active:**
+
+1. Check your server log for:
+   ```
+   PlaceholderAPI expansion registered: %aml_*%
+   ```
+2. Test a placeholder in-game:
+   ```
+   /papi parse <player> %aml_clean%
+   ```
+
+If the parse returns a value, the expansion is working correctly.
+
+---
+
+## Players disconnect during scanning
+
+Decoder exceptions or packet errors during a scan usually indicate that the transport settings are too aggressive for your Minecraft version.
+
+**Fix:**
+
+```yaml
+probe-transport-speed: "fast"
+probe-speed: 4
+```
+
+Then reload with `/aml reload`. If disconnections continue, lower `probe-speed` further.
+
+---
+
+## Scans are slow on newer Minecraft versions
+
+Newer versions have stricter packet handling. Reduce the scope of each scan:
+
+- Use `check-mode: "BLOCKED"` for the fewest packets
+- Use `check-mode: "RELEVANT"` for a balanced scan
+- Keep `check-delay-ticks: 0`
+- Only increase `probe-speed` if players are not disconnecting
+
+---
+
+## Players show no mods detected
+
+This is expected for vanilla clients. For modded clients, check the following:
+
+| Possible cause | What to check |
+|---|---|
+| Vanilla client | No mods to detect — expected |
+| Wrong identifier | Verify identifiers in `mods.yml` against actual mod files |
+| Platform mismatch | Ensure identifiers cover Fabric, Forge, and NeoForge variants |
+| Bedrock client | Bedrock players are skipped when `bedrock.detect: true` |
+| Scan timeout | Increase `timeout-ticks` or reduce `probe-speed` |
+| Check mode exclusion | Confirm `check-mode` includes the mod you are looking for |
+
+---
+
+## Multi-server data is not syncing
+
+Check all of the following:
+
+- The multi-server module is **enabled** in `modules/multi-server.yml`
+- MySQL credentials are correct and the database is reachable
+- Each server has a **unique** server name configured
+- The database user has sufficient permissions (SELECT, INSERT, UPDATE, DELETE)
+
+---
+
+## Discord webhooks are not sending
+
+- Confirm the module is enabled in `modules/discord.yml`
+- Verify the webhook URL is valid and the channel still exists
+- Check that the event group (`allowed`, `illegal`, `warn`) matches the scan result you are testing with
+- Increase the timeout value if the server has high latency to Discord's API
+
+---
+
+## Operators are not exempt from scanning
+
+This is intentional. Operators are **not** automatically bypassed. Only players with the `aml.bypass` permission are excluded from scans. Grant it explicitly if needed.

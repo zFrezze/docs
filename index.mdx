@@ -1,134 +1,55 @@
 ---
-title: Home
-description: Everything you need to set up, configure, and get the most out of Platform, Analytics, and Integrations tools.
-mode: frame
+title: AdvancedModList
+description: A Paper plugin that helps server owners detect configured client-side Minecraft mods.
+mode: wide
 ---
 
-<div data-product-guide-index className="flex w-full flex-col gap-8 max-w-5xl mx-auto px-4 md:px-8 lg:px-12 py-10 lg:gap-14 lg:py-16">
+<div className="flex w-full flex-col gap-8 max-w-5xl mx-auto px-4 md:px-8 lg:px-12 py-10 lg:gap-14 lg:py-16">
   <div className="flex max-w-[540px] flex-col gap-2 self-center text-center">
     <h1 className="text-[30px] font-medium leading-9 tracking-tight text-gray-900 dark:text-gray-50">
-      Product Guide
+      AdvancedModList
     </h1>
     <p className="text-balance text-base leading-relaxed tracking-tight text-gray-600 dark:text-gray-400">
-      Everything you need to set up, configure, and get the most out of Platform, Analytics, and Integrations tools.
+      A Paper plugin that detects client-side Minecraft mods, classifies them as allowed or blocked, and lets you automate responses — all without an anticheat.
     </p>
   </div>
 
   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-    <Card
-      title={<span className="product-guide-feature-card-title">Platform overview</span>}
-      icon="chart-no-axes-gantt"
-      href="/platform"
-      className="product-guide-feature-card"
-      size={64}
-    >
-      <span className="product-guide-feature-card-description">Setup, configure, and manage your workspace.</span>
+    <Card title="Installation" icon="rocket" href="/getting-started/installation">
+      Place the JAR, start the server, and configure your first scan in minutes.
     </Card>
-
-    <a
-      href="/analytics"
-      className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-    >
-      <Icon icon="chart-column" color="rgb(var(--primary))" size={18} className="shrink-0" />
-      <div className="flex flex-col gap-1">
-        <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Analytics</span>
-        <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          Build, report, and visualize your data.
-        </span>
-      </div>
-    </a>
-    <a
-      href="/integrations"
-      className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-    >
-      <Icon icon="code-xml" color="rgb(var(--primary))" size={18} className="shrink-0" />
-      <div className="flex flex-col gap-1">
-        <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Integrations</span>
-        <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          Ready-to-use connectors for common platforms and flexible webhooks.
-        </span>
-      </div>
-    </a>
+    <Card title="Configuration" icon="settings" href="/configuration/config">
+      Tune check mode, probe speed, language, and more in <code>config.yml</code>.
+    </Card>
+    <Card title="Mod Files" icon="file-code" href="/configuration/mod-files">
+      Define which mods to track and which to block using YAML mod lists.
+    </Card>
+    <Card title="Modules" icon="blocks" href="/modules/overview">
+      Enable Discord webhooks, auto commands, GUI, bypass detection, and multi-server sync.
+    </Card>
   </div>
 
   <hr className="border-0 border-t border-border" />
 
   <div className="flex flex-col gap-4">
-    <h2 className="font-serif text-xl font-medium leading-normal text-gray-900 dark:text-gray-50">Common tasks</h2>
-
+    <h2 className="font-serif text-xl font-medium leading-normal text-gray-900 dark:text-gray-50">Key features</h2>
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-      <a
-        href="/platform/configuration/user-management"
-        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-      >
-        <Icon icon="users" color="rgb(var(--primary))" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Manage your team</span>
-          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            Add members, assign roles, and control access across your workspace.
-          </span>
-        </div>
-      </a>
-      <a
-        href="/analytics/connect-data"
-        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-      >
-        <Icon icon="database" color="rgb(var(--primary))" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Connect a data source</span>
-          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            Link a database, data warehouse, or third-party data provider.
-          </span>
-        </div>
-      </a>
-      <a
-        href="/integrations/connectors/crm"
-        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-      >
-        <Icon icon="building-2" color="rgb(var(--primary))" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Connect your CRM</span>
-          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            Sync your CRM through native connectors or a custom strategy.
-          </span>
-        </div>
-      </a>
-      <a
-        href="/analytics/dashboards/create-dashboard"
-        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-      >
-        <Icon icon="layout-dashboard" color="rgb(var(--primary))" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Build a dashboard</span>
-          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            Add charts, set filters, and share a live dashboard.
-          </span>
-        </div>
-      </a>
-      <a
-        href="/integrations/webhooks/configure"
-        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-      >
-        <Icon icon="webhook" color="rgb(var(--primary))" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Set up a webhook</span>
-          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            Subscribe to events and route them to any endpoint.
-          </span>
-        </div>
-      </a>
-      <a
-        href="/analytics/reports/scheduled-reports"
-        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-      >
-        <Icon icon="calendar-clock" color="rgb(var(--primary))" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Schedule a report</span>
-          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            Send recurring snapshots via email or Slack.
-          </span>
-        </div>
-      </a>
+      <Card title="Automatic scans" icon="scan" href="/modules/overview#start-scan">
+        Scan players automatically on join with a configurable delay.
+      </Card>
+      <Card title="Discord integration" icon="bell" href="/modules/overview#discord">
+        Send scan results to Discord via webhooks, split by result type.
+      </Card>
+      <Card title="Commands & GUI" icon="terminal" href="/reference/commands">
+        Probe players manually, browse results in a GUI, and manage the blocklist live.
+      </Card>
+      <Card title="PlaceholderAPI" icon="code" href="/reference/placeholderapi">
+        Expose scan data to scoreboards, chat formatters, and other plugins.
+      </Card>
     </div>
   </div>
+
+  <Callout type="warning">
+    AdvancedModList is a detection and warning tool, **not a perfect anticheat**. Results can be bypassed or spoofed. Use it as one layer of your moderation strategy.
+  </Callout>
 </div>

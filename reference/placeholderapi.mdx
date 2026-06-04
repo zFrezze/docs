@@ -1,0 +1,76 @@
+---
+title: PlaceholderAPI
+description: All %aml_*% placeholders provided by AdvancedModList.
+---
+
+AdvancedModList includes a built-in PlaceholderAPI expansion with the identifier `aml`. When PlaceholderAPI is installed, the expansion registers automatically — no separate eCloud download is needed.
+
+<Note>
+  Placeholders **do not start scans**. They only read the latest known scan result or the state of a currently running probe.
+</Note>
+
+---
+
+## Scan results
+
+| Placeholder | Returns |
+|---|---|
+| `%aml_clean%` / `%aml_is_clean%` | Whether the last scan result was clean |
+| `%aml_mod_count%` / `%aml_mods_count%` | Total number of mods detected |
+| `%aml_blocked_count%` | Number of blocked mods detected |
+| `%aml_allowed_count%` | Number of allowed/clean mods detected |
+
+### `%aml_clean%` values
+
+| Value | Meaning |
+|---|---|
+| `yes` | Last scan was clean |
+| `no` | Blocked mods were detected |
+| `checking` | A scan is currently in progress |
+| `unknown` | No scan data available for this player |
+
+---
+
+## Mod lists
+
+| Placeholder | Returns |
+|---|---|
+| `%aml_mods%` | Complete list of all detected mods |
+| `%aml_blocked_mods%` | List of detected blocked mods |
+| `%aml_allowed_mods%` | List of detected allowed mods |
+
+---
+
+## Client & status
+
+| Placeholder | Returns |
+|---|---|
+| `%aml_brand%` | Client brand identifier reported by the client |
+| `%aml_probe_status%` / `%aml_status%` | Result status of the latest probe |
+| `%aml_bypass_risk%` / `%aml_risk%` | Bypass risk as a percentage |
+
+### `%aml_probe_status%` values
+
+| Value | Meaning |
+|---|---|
+| `SUCCESS` | Scan completed successfully |
+| `IN_PROGRESS` | Scan is currently running |
+| `TIMEOUT` | Scan exceeded the configured timeout |
+| `CANARY_FAILED` | Canary check failed during scan |
+| `PACKET_SEND_FAILED` | Failed to send probe packets to client |
+| `INTERNAL_ERROR` | An internal plugin error occurred |
+| `BEDROCK_CLIENT` | Client is a Bedrock player; scan was skipped |
+| `PLAYER_LEFT_BEFORE_START` | Player disconnected before the scan began |
+| `UNKNOWN` | Status could not be determined |
+
+---
+
+## Testing placeholders
+
+With PlaceholderAPI installed, you can test any placeholder in-game:
+
+```
+/papi parse <player> %aml_clean%
+/papi parse <player> %aml_blocked_mods%
+/papi parse <player> %aml_status%
+```

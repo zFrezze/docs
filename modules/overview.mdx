@@ -1,0 +1,112 @@
+---
+title: Modules
+description: Overview of all AdvancedModList modules and their configuration files.
+---
+
+Modules extend the core scanning functionality with notifications, automation, and data management. All module config files are located in `plugins/AdvancedModList/modules/`.
+
+---
+
+## Start Scan
+
+**File:** `modules/start-scan.yml`
+
+Automatically probes players when they join the server.
+
+### probe-delay-ticks
+
+Controls how long after joining the scan starts.
+
+| Value | Behavior |
+|---|---|
+| `20` | Recommended — gives the client time to fully connect |
+| `5–10` | Faster scans, may miss some clients |
+| `0` | Immediate — only use after thorough testing |
+
+### Cooldown
+
+An optional cooldown setting prevents repeated rescans within a defined window (in seconds). Useful if players reconnect frequently.
+
+---
+
+## Discord
+
+**File:** `modules/discord.yml`
+
+Sends scan results to one or more Discord channels via webhooks.
+
+Supports multiple webhook targets, each with configurable **event groups**:
+
+| Event group | When it fires |
+|---|---|
+| `allowed` | Scan completed with only clean/permitted mods |
+| `illegal` | One or more blocked mods detected |
+| `warn` | Scan warning or bypass risk detected |
+
+Additional options include player head thumbnails, a server name label, and UUID inclusion in the embed.
+
+---
+
+## Auto Command
+
+**File:** `modules/auto-command.yml`
+
+Executes console commands automatically after a scan based on the result.
+
+### Detection modes
+
+| Mode | Triggers when |
+|---|---|
+| `any-blocked` | At least one blocked mod is detected |
+| `mods` | Specific mod(s) are detected |
+| `except-mods` | Any mod detected **except** specified ones |
+| `bypass-risk` | Bypass risk exceeds the configured threshold |
+
+### Available placeholders in commands
+
+| Placeholder | Value |
+|---|---|
+| `{player}` | Player name |
+| `{blockedMods}` | Comma-separated list of blocked mods |
+| `{bypassRiskPercent}` | Bypass risk as a percentage |
+
+Velocity proxy forwarding is supported via compatible external plugins.
+
+---
+
+## Bypass Detection
+
+**File:** `modules/bypass-detection.yml`
+
+Analyzes scan patterns for signs of result manipulation or information hiding. This is separate from blocked-mod detection.
+
+| Setting | Description |
+|---|---|
+| `min-mods-for-evaluation` | Minimum number of detected mods required before evaluating bypass risk |
+| `warn-threshold-percent` | Risk percentage that triggers a warning |
+| `warn-cooldown-hours` | Minimum hours between repeated bypass warnings for the same player |
+
+---
+
+## GUI
+
+**File:** `modules/gui.yml`
+
+Configures the `/aml gui` in-game interface. Options include:
+
+- Sort order for the mod list
+- Filtering options for result types
+
+---
+
+## Multi-Server
+
+**File:** `modules/multi-server.yml`
+
+Synchronizes player scan data across multiple servers using a shared MySQL database.
+
+Each server must have a **unique server identifier** in the config. All servers sharing data must connect to the same MySQL database with the correct credentials and permissions.
+
+<Warning>
+  The multi-server module requires MySQL. The plugin will not sync data without a properly configured and accessible database.
+</Warning>

@@ -1,0 +1,66 @@
+---
+title: Permissions
+description: All permission nodes for AdvancedModList.
+---
+
+## Admin
+
+| Node | Default | Description |
+|---|---|---|
+| `aml.admin` | `op` | Grants access to all administrative commands and notifications |
+
+<Note>
+  `aml.admin` does **not** automatically include `aml.bypass`. Operators are also **not** exempt from scans unless they explicitly have `aml.bypass`.
+</Note>
+
+---
+
+## Commands
+
+| Node | Command enabled |
+|---|---|
+| `aml.command.help` | `/aml help` |
+| `aml.command.reload` | `/aml reload` |
+| `aml.command.probe` | `/aml probe <player>` |
+| `aml.command.list` | `/aml list <player>` |
+| `aml.command.modlist` | `/aml <player>` |
+| `aml.command.gui` | `/aml gui` and `/aml gui <player>` |
+
+---
+
+## Blocked mod management
+
+| Node | Description |
+|---|---|
+| `aml.command.blocked` | Parent permission for all blocked-mod subcommands |
+| `aml.command.blocked.list` | `/aml blocked list` |
+| `aml.command.blocked.add` | `/aml blocked add <mod>` |
+| `aml.command.blocked.remove` | `/aml blocked remove <mod>` |
+
+---
+
+## Multi-server
+
+| Node | Description |
+|---|---|
+| `aml.command.multiserver` | Parent permission for all multi-server subcommands |
+| `aml.command.multiserver.info` | `/aml multiserver info` |
+| `aml.command.multiserver.clear` | `/aml multiserver clear confirm` |
+
+---
+
+## Notifications
+
+| Node | Description |
+|---|---|
+| `aml.notify` | Parent permission for all probe notifications |
+| `aml.notify.blocked` | Receive notifications when blocked mods are detected |
+| `aml.notify.allowed` | Receive notifications for clean/allowed scan results |
+
+---
+
+## Bypass
+
+| Node | Default | Description |
+|---|---|---|
+| `aml.bypass` | `false` | Exempts the player from being scanned entirely |
