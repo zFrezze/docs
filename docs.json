@@ -16,7 +16,7 @@
     "eyebrows": "breadcrumbs"
   },
   "contextual": {
-    "options": ["copy", "view", "assistant"]
+    "options": ["view", "assistant"]
   },
   "navigation": {
     "global": {
@@ -25,11 +25,6 @@
           "anchor": "Home",
           "icon": "house",
           "href": "/"
-        },
-        {
-          "anchor": "GitHub",
-          "icon": "github",
-          "href": "https://github.com/Jakobgamer/AdvancedModList-Wiki"
         }
       ]
     },
@@ -86,12 +81,7 @@
     "dark": "/logo/dark.svg"
   },
   "navbar": {
-    "links": [],
-    "primary": {
-      "type": "button",
-      "label": "GitHub",
-      "href": "https://github.com/Jakobgamer/AdvancedModList-Wiki"
-    }
+    "links": []
   },
   "footer": {
     "socials": {}
